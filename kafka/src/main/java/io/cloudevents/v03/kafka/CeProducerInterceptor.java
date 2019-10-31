@@ -9,6 +9,7 @@ import java.util.Map;
 public class CeProducerInterceptor<K, V> implements ProducerInterceptor<K, V> {
   @Override
   public ProducerRecord<K, V> onSend(ProducerRecord<K, V> record) {
+
     return null;
   }
 
