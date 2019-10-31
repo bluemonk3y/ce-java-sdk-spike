@@ -165,9 +165,9 @@ public class CEHeader_KafkaProducerBinaryTest {
     Properties consumerProperties = kafka.useTo().getConsumerProperties("consumer", "consumer.id", OffsetResetStrategy.EARLIEST);
 
     try (
-            KafkaProducer<String, CloudEvent<AttributesImpl, Much>> ceProducer = new KafkaProducer<String, CloudEvent<AttributesImpl, Much>>(producerProperties, new StringSerializer(), new CeHeaderBinarySerializer())) {
+            KafkaProducer<String, Much> ceProducer = new KafkaProducer<String, Much>(producerProperties, new StringSerializer(), new CeHeaderBinarySerializer())) {
 
-      ProducerRecord<String, CloudEvent<AttributesImpl, Much>> record = new CeHeaderBinarySerializer().getProducerRecordWithCloudEvent(testTopic, ce);
+      ProducerRecord<String, Much> record = new CeHeaderBinarySerializer().getProducerRecordWithCloudEvent(testTopic, ce);
       RecordMetadata metadata = ceProducer.send(record).get();
       ceProducer.flush();
 
